@@ -31,6 +31,9 @@ case "$command" in
             mongo down
         fi
         ;;
+    "test")
+        go test -v ./...
+        ;;
     "mongo")
         mongo up
         ;;
