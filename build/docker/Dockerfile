@@ -59,6 +59,15 @@ ENV AMBULANCE_API_MONGODB_USERNAME=root
 ENV AMBULANCE_API_MONGODB_PASSWORD=
 ENV AMBULANCE_API_MONGODB_TIMEOUT_SECONDS=5
 
+
+# to avoid connection errors in standalone case otel exporters are disabled by default
+ENV OTEL_TRACES_EXPORTER=none
+ENV OTEL_METRICS_EXPORTER=none
+ENV OTEL_LOGS_EXPORTER=none
+ENV LOG_LEVEL=info
+
+ENV OTEL_SERVICE_NAME=ambulance-wl-api
+
 COPY --from=build /app/ambulance-webapi-srv ./
 
 # Actual port may be changed during runtime
